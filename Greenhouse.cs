@@ -43,15 +43,6 @@ public class Greenhouse
         return response;
     }
 
-    private HttpResponseMessage GetResponseFulLRoute(string route)
-    {
-        return GetResponse(route);
-        //var requestMessage = new HttpRequestMessage(HttpMethod.Get, route);
-        //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", base64String);
-        //var response = sharedClient.Send(requestMessage);
-        //return response;
-    }
-
     public async Task<string?> GetNextSchedulesAsync()
     {
         HttpResponseMessage response = GetResponse("scorecards");
@@ -71,7 +62,7 @@ public class Greenhouse
         }
 
         Console.WriteLine("++++ " + url);
-        var finalResponse = GetResponseFulLRoute(url);
+        var finalResponse = GetResponse(url);
         return await finalResponse.Content.ReadAsStringAsync();
     }
 
